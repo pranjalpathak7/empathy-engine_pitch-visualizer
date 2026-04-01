@@ -15,6 +15,12 @@ Before diving into the local setup, you can check out the fully deployed, live p
 
 ---
 
+## GitHub Repository link
+
+**[https://github.com/pranjalpathak7/empathy-engine_pitch-visualizer/](https://github.com/pranjalpathak7/empathy-engine_pitch-visualizer/)**
+
+---
+
 ## 🛠️ Local Setup & Execution Instructions
 
 If you want to run this architecture on your local machine, follow these detailed steps. This project relies on several cloud services, so authetication is a critical first step.
