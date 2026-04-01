@@ -11,5 +11,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the backend code
 COPY . .
 
-# Cloud Run expects the server to run on port 8080
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Use the dynamic $PORT variable injected by Cloud Run
+CMD uvicorn main:app --host 0.0.0.0 --port $PORT

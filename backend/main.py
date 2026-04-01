@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import base64
+from dotenv import load_dotenv
 import asyncio
 
 # Challenge 1 Imports
@@ -11,6 +12,8 @@ from tts_engine import TTSEngine
 # Challenge 2 Imports
 from story_processor import StoryProcessor
 from image_generator import ImageGenerator
+
+load_dotenv()
 
 app = FastAPI(title="Darwix AI Unified Platform API")
 
