@@ -143,6 +143,8 @@ To manipulate the audio, I programmatically generate complex Speech Synthesis Ma
 * **Anger (The "Seething" Effect):** Anger isn't always loud and fast; sometimes it is quiet and forceful. I drop the pitch heavily ($-5.0st$). If intensity is $\ge 0.8$, the algorithm splits the text string and injects harsh `150ms` `<break>` tags between *every single word*, wrapping the entire phrase in `<emphasis level="strong">`. This perfectly simulates a human speaking through gritted teeth.
 * **Sadness:** Rate drops drastically (down to 70%), pitch is lowered to $-6.0st$, and volume is softened to emulate physical exhaustion and lethargy.
 * **Fear & Surprise:** Fear utilizes a high pitch but specifically sets the volume to `soft` to create a breathy, trembling delivery. Surprise maximizes both pitch ($+6.0st$) and volume for sudden, jarring shock.
+* **Joy (The "Euphoric" State):** Joy is relatively straighforward to synthesize because it aligns closely with the default "helpful" tone of standard TTS models. When the intensity is high, I increase the speaking rate to 115% and bump the pitch by +3.0st. This creates a sense of forward momentum and excitment without sounding artificially sped up.
+* **Neutral (The Bypass Architecture):** If the NLP model returns 'Neutral', or if the calculated intensity of any emotion falls below our baseline threshold, the Empathy Engine executes an SSML bypass. Instead of applying unnesessary parametric tags, it passes the raw text directly to Google's API. This is a deliberate architectural choice to save compute cycles and allow the model to use its naturally optimized, conversational latent space for standard dialogue.
 
 ### ⚠️ Critical Discussion: The Limitations of Google Cloud TTS
 
