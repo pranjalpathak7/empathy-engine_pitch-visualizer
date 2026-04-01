@@ -11,6 +11,10 @@ export default function PitchVisualizer() {
   const [storyError, setStoryError] = useState('');
   const [storyResult, setStoryResult] = useState(null);
 
+  const API_BASE_URL = import.meta.env.DEV 
+  ? 'http://127.0.0.1:8000' 
+  : 'https://darwix-backend-467455411794.us-central1.run.app';
+
   const sampleStoryText = "The client was drowning in manual data entry, losing dozens of hours a week. Frustration was at an all-time high, and morale was completely broken. Then, they deployed the Darwix AI platform. Within a week, the automated pipelines cleared the backlog, and the team finally had time to focus on creative strategy.";
 
   const visualStyles = [
@@ -24,7 +28,7 @@ export default function PitchVisualizer() {
     if (!storyText.trim()) return;
     setStoryLoading(true); setStoryError(''); setStoryResult(null);
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/generate-storyboard', { 
+      const response = await axios.post(`${API_BASE_URL}/api/generate-storyboard`, { 
         text: storyText,
         style: storyStyle // Sends whatever is currently active (preset or custom)
       });

@@ -8,6 +8,10 @@ export default function EmpathyEngine() {
   const [voiceError, setVoiceError] = useState('');
   const [voiceResult, setVoiceResult] = useState(null);
 
+  const API_BASE_URL = import.meta.env.DEV 
+  ? 'http://127.0.0.1:8000' 
+  : 'https://darwix-backend-467455411794.us-central1.run.app';
+
   const sampleVoiceTexts = [
     "I absolutely hate you for what you did! This is entirely your fault.",
     "We just secured the biggest enterprise contract in the company's history!",
@@ -18,7 +22,7 @@ export default function EmpathyEngine() {
     if (!voiceText.trim()) return;
     setVoiceLoading(true); setVoiceError(''); setVoiceResult(null);
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/generate-voice', { text: voiceText });
+      const response = await axios.post(`${API_BASE_URL}/api/generate-voice`, { text: voiceText });
       setVoiceResult(response.data);
     } catch (err) {
       setVoiceError('System Failure: Unable to connect to Empathy Engine backend.');
